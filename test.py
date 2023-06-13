@@ -1,5 +1,5 @@
 def variableTypeCheck():
-    varTesting = (2, "esta", 6.5)
+    varTesting = {2, "esta", 6.5, "prueba" : 30}
     print("Variable: ", varTesting, ", Tipo: ", type(varTesting))
     
 def variableConversion():
@@ -24,5 +24,5 @@ def stringArrayCheck(x):
     strArrayVar = "012345"
     print("The character on the array position is: " ,strArrayVar[x])
     
-stringArrayCheck(3)
+
 
