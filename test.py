@@ -24,5 +24,5 @@ def stringArrayCheck(x):
     strArrayVar = "012345"
     print("The character on the array position is: " ,strArrayVar[x])
     
-
+"testing"
 
