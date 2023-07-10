@@ -1,35 +1,32 @@
 import time
+import cmd
 
-class ValueInterpreter:
-
-    def varTypeCheck(self):
-        x = input("Write an appropiate variable value:\n")
-        a = self.interpret(x)
-        if a == "error":
-            input('Unrecognized data type, try again! (press "Enter" to continue)')
-            self.startProgram()
-        else:
-            print("Variable:", x, type(a))
-            time.sleep(1)
-            self.startProgram()
-    
-    def interpret(self, val):                    
+class ValueInterpreter(cmd.Cmd):
+     
+    def __init__(self):
+        super().__init__()
+        self.doc_header = "Hello there, what do you want to do? (type help <command>)"
+     
+    def do_TypeCheck(self, val):                    
         try:
-            return eval(val)
+            print("Variable: ", val, type(eval(val)))
         except:
-            return "error"
-              
-    def startProgram(self):
-        chooseVar = input('Do you want to test a variable type in Python? (y/n)\n')
-        if chooseVar == "y":
-            self.varTypeCheck()
-        elif chooseVar == "n":
-            input("Exiting program...")
-        else:
-            input('Please input a valid answer and try again! (press "Enter" to continue)')        
-            self.startProgram()
+            print("Unrecognized data type, try again!")
+    
+    def help_TypeCheck(self):
+        print("Type 'TypeCheck <value>' with an apropiate Python value and it will return the data type")
+    
+    def do_Exit(self, line):
+        print("Exiting program...")
+        time.sleep(1)
+        return True
+        
+    def help_Exit(self):
+        print("Exits the program")
+        
+    def preloop(self):
+        self.do_help('')
         
 if __name__ == '__main__':
-    exampleObject = ValueInterpreter()
-    exampleObject.startProgram()    
+    ValueInterpreter().cmdloop()
 
