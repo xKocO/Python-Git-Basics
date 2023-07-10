@@ -1,13 +1,15 @@
 import sys
-import msvcrt as m
+import keyboard
 
-class BegginerExample:
+class BeginnerExample:
 
     def varTypeCheck(self):
-        x = input("Write a variable Float, Int, String, List, or Tuple: ")
+        x = input("Write an apropiate variable value:\n")
         a = self.interpret(x)
         if a == "error":
-            print("Wrong variable format!")
+            print("Unrecognized data type, try again! (press any key to continue)")
+            wait()
+            self.startProgram()
         else:
             print("Variable:", x, type(a))
     
@@ -25,7 +27,12 @@ class BegginerExample:
                 return "error"
         elif 'range' in val:
             try:
-                return range(int(val[6]))
+                return range(int(val[6:]))
+            except:
+                return "error"
+        elif val.startswith("'") and val.endswith("'") or val.startswith('"') and val.endswith('"'):
+            try:
+                return str(val)
             except:
                 return "error"
         else:
@@ -41,25 +48,21 @@ class BegginerExample:
                         return "error"
 
 def wait():
-    m.getch()
-"""    
+    keyboard.read_key()
+    
+exampleObject = BeginnerExample()
+
 def startProgram():
-    chooseVar = input('Do you want to do a "Variable type check" (vtc), do a "Variable conversion" (vc) or do a "String array check"? (sac)  ')
-    if chooseVar == "vct":
-        BegginerExample.varTypeCheck()
-    elif chooseVar == "vc":
-        BegginerExample.variableConversion89
-    elif chooseVar == "sac":
-        BegginerExample.stringArrayCheck()
+    chooseVar = input('Do you want to test a variable type on Python? (y/n)\n')
+    if chooseVar == "y":
+        exampleObject.varTypeCheck()
+    elif chooseVar == "n":
+        print("Exiting program...")
     else:
         print('Please input a valid answer and try again! (press any key to continue)')
         wait()
         startProgram()
 
 if __name__ == __name__:
-    startProgram()
-"""    
-exampleObject = BegginerExample()
-exampleObject.varTypeCheck()
-print("Press anything to close the window")
-wait()
+    startProgram()    
+
