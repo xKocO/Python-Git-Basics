@@ -29,8 +29,7 @@ class ValueInterpreter:
             input('Please input a valid answer and try again! (press "Enter" to continue)')        
             self.startProgram()
         
-exampleObject = ValueInterpreter()
-
-if __name__ == __name__:
+if __name__ == '__main__':
+    exampleObject = ValueInterpreter()
     exampleObject.startProgram()    
 
