@@ -13,8 +13,7 @@ class ValueInterpreter:
             time.sleep(1)
             self.startProgram()
     
-    def interpret(self, val):
-                    
+    def interpret(self, val):                    
         try:
             return eval(val)
         except:
