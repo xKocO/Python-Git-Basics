@@ -1,4 +1,2 @@
 # Simple Python Testing
-Some really simple Python functions meant for begginers who want to try to run some examples on the command line interface.
-
-## Also some basic Git functionality
+A really simple program in which you can input Python variables con a command line interface and it will return the data type used.
