@@ -1,15 +1,11 @@
-import sys
-import keyboard
-
 class BeginnerExample:
 
     def varTypeCheck(self):
-        x = input("Write an apropiate variable value:\n")
+        x = input("Write an appropiate variable value:\n")
         a = self.interpret(x)
         if a == "error":
-            print("Unrecognized data type, try again! (press any key to continue)")
-            wait()
-            self.startProgram()
+            input('Unrecognized data type, try again! (press "Enter" to continue)')
+            startProgram()
         else:
             print("Variable:", x, type(a))
     
@@ -27,7 +23,7 @@ class BeginnerExample:
                 return "error"
         elif 'range' in val:
             try:
-                return range(int(val[6:]))
+                return range(int(val[6]))
             except:
                 return "error"
         elif val.startswith("'") and val.endswith("'") or val.startswith('"') and val.endswith('"'):
@@ -46,21 +42,17 @@ class BeginnerExample:
                         return complex(val)
                     except ValueError:
                         return "error"
-
-def wait():
-    keyboard.read_key()
-    
+                        
 exampleObject = BeginnerExample()
 
 def startProgram():
-    chooseVar = input('Do you want to test a variable type on Python? (y/n)\n')
+    chooseVar = input('Do you want to test a variable type in Python? (y/n)\n')
     if chooseVar == "y":
         exampleObject.varTypeCheck()
     elif chooseVar == "n":
-        print("Exiting program...")
+        input("Exiting program...")
     else:
-        print('Please input a valid answer and try again! (press any key to continue)')
-        wait()
+        input('Please input a valid answer and try again! (press "Enter" to continue)')        
         startProgram()
 
 if __name__ == __name__:
